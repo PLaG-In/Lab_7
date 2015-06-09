@@ -34,9 +34,16 @@ public:
 		m_top = std::make_unique<Item>(std::forward<T>(value), move(m_top));
 	}
 
-	void Pop()
+	T Peek()
 	{
-		
+		return m_top->value;
+	}
+
+	T Pop()
+	{
+		T top = m_top->value;
+		m_top = std::move(m_top->previous);
+		return top;
 	}
 
 
